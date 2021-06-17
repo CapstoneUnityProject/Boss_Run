@@ -146,7 +146,6 @@ public class DataBaseManager : MonoBehaviour
         }
         CommandPanel.ClearText();
         PlayerPanel.instance.PlayerActionUnLock();
-        PlayerPanel.instance.ActionFinished(CommandPanel.selectedCharacterIndex);
         GameManager.instance.currUsingSkill = null;
     }
 
@@ -274,7 +273,6 @@ public class DataBaseManager : MonoBehaviour
         GameManager.instance.inGameEnemies[EnemyIdx].currHP = victimHp - Damage;
         EnemyPanel.instance.transform.GetChild(EnemyIdx).GetChild(1).GetComponent<Slider>().value = GameManager.instance.inGameEnemies[EnemyIdx].currHP;
         GameManager.instance.OnDamagedAnim(EnemyPanel.instance.transform.GetChild(EnemyIdx), Damage);
-
         EnemyPanel.instance.EnemyDeath();
     }
 
@@ -301,7 +299,7 @@ public class DataBaseManager : MonoBehaviour
         int playerIdx = CommandPanel.selectedCharacterIndex;
         int enemyIdx = EnemyToolTip.selectedEnemyIdx;
         int Damage = (int)(GameManager.instance.playCharacters[playerIdx].currAtk * (1 - GameManager.instance.inGameEnemies[enemyIdx].currDefRate));
-        
+        PlayerPanel.instance.ActionFinished(CommandPanel.selectedCharacterIndex);
         PlayerAttack(playerIdx, enemyIdx, Damage);
     }
 

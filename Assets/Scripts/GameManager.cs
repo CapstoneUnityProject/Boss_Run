@@ -53,8 +53,9 @@ public class GameManager : MonoBehaviour
 
     public IEnumerator currUsingSkill;
 
-    public GameObject DamagePrefab;
     public static GameManager instance;
+
+    public GameObject DamagePrefab;
     public PlayableCharacter[] playCharacters = new PlayableCharacter[Constants.PartyMemberCount];
     public int[] playCharactersNo = new int[Constants.PartyMemberCount];
     public List<InGameEnemy> inGameEnemies = new List<InGameEnemy>();
